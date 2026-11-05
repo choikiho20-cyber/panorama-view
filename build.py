@@ -224,7 +224,7 @@ posts_section = (f'<section><div class="wrap"><div class="head rv"><h2>소식</h
                  f'<p class="rv" style="margin-top:30px"><a class="link" href="{base}/blog.html">글 전체 보기</a></p></div></section>') if posts else ""
 
 index_body = fill((T / "index.html").read_text(encoding="utf-8"), dict(
-    hero_pic=hero_pic, tagline=escape(cfg["tagline"]),
+    hero_pic=hero_pic, tagline="".join(f"<span><i>{escape(l.strip())}</i></span>" for l in cfg["tagline"].split("|")),
     hero_sub=escape(f"대지 {cfg['site_area']}에 {cfg['house_area']} 집 한 채. 기준 {cap['base']}명, 최대 {cap['max']}명이 호수를 보며 묵습니다."),
     hero_cap=f'<p class="cap">촬영 예정 자리, AI 시안</p>' if hero in AI and cfg["photos_temporary"] else "",
     tel=tel, phone=phone, ico_call=ico_call, ico_sms=ico_sms, name=escape(name), sms_tel=sms_tel, today=today.isoformat(),
@@ -259,7 +259,7 @@ if domain:
 if filled:
     business["sameAs"] = [c["url"] for c in filled]
 page("index.html", f"{name} | 청풍호 독채 펜션, 하루 한 팀 최대 {cap['max']}명", description, index_body,
-     [business, faq_ld(cfg["faq"])], og_title=f"{name}, {cfg['tagline']}", preload=preload)
+     [business, faq_ld(cfg["faq"])], og_title=f"{name}, {cfg['tagline'].replace('|', ' ')}", preload=preload)
 
 # ── 공간 ─────────────────────────────────────────────────────────────────
 rooms_html, gallery = "", []
