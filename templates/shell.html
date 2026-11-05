@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{{robots}}
+<title>{{title}}</title>
+<meta name="description" content="{{description}}">
+<link rel="canonical" href="{{url}}">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="{{name}}">
+<meta property="og:title" content="{{og_title}}">
+<meta property="og:description" content="{{description}}">
+<meta property="og:url" content="{{url}}">
+<meta property="og:image" content="{{og_image}}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+{{verify}}
+<link rel="icon" href="{{base}}/favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#1f3335">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@300;400;500&display=swap">
+<link rel="stylesheet" media="print" onload="this.media='all'" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@300;400;500&display=swap"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"></noscript>
+<link rel="stylesheet" href="{{base}}/site.css?v={{css_v}}">
+{{preload}}
+{{ld}}
+{{ga4}}
+</head>
+<body>
+<a class="skip" href="#main">본문으로</a>
+<header class="top">
+  <div class="wrap">
+    <button class="burger" type="button" data-menu aria-label="메뉴 열기">{{ico_menu}}<span>메뉴</span></button>
+    <a class="logo" href="{{base}}/" aria-label="{{name}} 홈">{{mark}}{{name}}</a>
+    <a class="btn btn-line" href="{{base}}/guide.html#book">예약 문의</a>
+  </div>
+</header>
+<dialog class="sheet" aria-label="메뉴">
+  <button class="x" type="button" data-menu aria-label="메뉴 닫기">{{ico_x}}</button>
+  {{menu}}
+  <a class="call" href="tel:{{tel}}">전화 {{phone}}</a>
+</dialog>
+<main id="main">
+{{body}}
+</main>
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <a class="logo" href="{{base}}/">{{mark}}{{name}}</a>
+        <p>{{addr}}<br>입실 {{checkin}} 퇴실 {{checkout}}<br><a href="tel:{{tel}}">{{phone}}</a></p>
+      </div>
+      <div><h4>둘러보기</h4><ul>{{foot_menu}}</ul></div>
+      <div><h4>채널</h4><ul>{{channels}}</ul></div>
+    </div>
+    <div class="legal">
+      <span>{{biz}}© {{year}} {{name}}</span>
+      <span>최종 수정 <time datetime="{{updated}}">{{updated}}</time> · 제작 <a href="https://sotongmk.com" target="_blank" rel="noopener">소통마케팅센터</a></span>
+    </div>
+  </div>
+</footer>
+<nav class="bar" aria-label="빠른 연락">
+  <a href="tel:{{tel}}">{{ico_call}}전화</a>
+  <a href="{{sms_href}}">{{ico_sms}}문자</a>
+  <a href="{{route_url}}" target="_blank" rel="noopener">{{ico_pin}}길찾기</a>
+</nav>
+{{extra}}
+<script src="{{base}}/site.js?v={{js_v}}" defer></script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<section class="hero">
+  {{hero_pic}}
+  <div class="wrap">
+    <span class="label">충북 제천, 청풍호</span>
+    <h1>{{tagline}}</h1>
+    <p>{{hero_sub}}</p>
+    <div class="cta on-dark"><a class="btn btn-line" href="#book">예약 문의</a></div>
+  </div>
+  {{hero_cap}}
+</section>
+
+<section class="declare">
+  <div class="wrap">
+    <h2 class="rv">{{statement}}</h2>
+    <p class="rv">{{declare_sub}}</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="three">
+      {{three_html}}
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="head rv"><h2>이 집에서 보내는 하루</h2><p class="lead">{{day_lead}}</p></div>
+    <div class="day">
+      {{day_html}}
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <figure class="quote rv"><blockquote>{{quote}}</blockquote><figcaption>{{quote_by}}</figcaption></figure>
+  </div>
+</section>
+
+<section class="cover">
+  <img src="{{base}}/images/{{cover_img}}-800.webp" srcset="{{base}}/images/{{cover_img}}-800.webp 800w, {{base}}/images/{{cover_img}}.webp 1600w" sizes="100vw" width="{{cover_w}}" height="{{cover_h}}" alt="{{cover_alt}}" loading="lazy" decoding="async">
+  <div class="wrap on-dark">
+    <h2 class="rv">{{g_title}}</h2>
+    <p class="rv">{{g_lead}}</p>
+    <a class="btn btn-line rv" href="{{base}}/gathering.html">모임 안내 보기</a>
+  </div>
+</section>
+<section style="padding-top:0;border-top:0">
+  <div class="wrap">
+    <div class="seats">
+      {{seats_html}}
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="split">
+      <figure class="rv">{{pet_img}}</figure>
+      <div>
+        <h2 class="rv">{{pet_title}}</h2>
+        <p class="lead rv">{{pet_lead}}</p>
+        <dl class="rules rv">{{pet_rules}}</dl>
+        <p class="kids rv">{{pet_kids}}</p>
+        <p class="rv" style="margin-top:26px"><a class="link" href="{{base}}/pet.html">반려견 안내 자세히</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="head rv"><h2>네 계절</h2></div>
+    <div class="seasons rv">
+      {{seasons_html}}
+    </div>
+  </div>
+</section>
+
+<section id="rates">
+  <div class="wrap">
+    <div class="head rv"><h2>요금과 안내</h2><p class="lead">기준 인원 {{cap_base}}명, 최대 {{cap_max}}명. 입실 {{checkin}}, 퇴실 {{checkout}}.</p></div>
+    <div class="rates rv">
+      <div>
+        <table>{{rates_rows}}</table>
+        <p class="note">{{rate_note}}</p>
+      </div>
+      <div class="extras">{{extras_html}}</div>
+    </div>
+    <p class="rv" style="margin-top:34px"><a class="link" href="{{base}}/guide.html">이용 안내 전체 보기</a></p>
+    <div class="book rv" id="book"><div class="wrap">{{book_form}}</div></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="head rv"><h2>자주 묻는 질문</h2></div>
+    <div class="faq rv">{{faq_html}}</div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="way">
+      <div class="rv">
+        <h2>오시는 길</h2>
+        <p class="addr" style="margin-top:20px">{{addr}}</p>
+        <div class="maps"><a class="btn btn-line" href="{{route_url}}" target="_blank" rel="noopener">카카오맵 길찾기</a><a class="btn btn-line" href="{{naver_map_url}}" target="_blank" rel="noopener">네이버 지도</a></div>
+        <p class="small">{{nearby_line}}</p>
+      </div>
+      <div class="rv">
+        <h3 style="margin-bottom:14px">차로 10분 안팎</h3>
+        <div class="around">{{around_html}}</div>
+        <p class="small" style="margin-top:14px">{{around_note}} <a class="link" href="{{base}}/around.html">주변 안내 더 보기</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{{posts_section}}
