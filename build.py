@@ -308,12 +308,36 @@ page("guide.html", f"요금과 이용 안내 | {name}", f"{name} 1박 요금, �
      guide_body, [faq_ld(cfg["faq"]), crumbs("guide.html", "이용 안내")], current="guide.html")
 
 # ── 오시는 길 ────────────────────────────────────────────────────────────
-around_body = (f'<div class="page"><div class="wrap phead"><h1>청풍호 옆, 차로 10분 안에 다 있습니다</h1><p class="lead">{escape(addr)}. {escape(", ".join(f"{n} {d}" for n, d in cfg["nearby"]))}.</p>'
+# 제천에서 머무는 법 — config "jecheon" (십경·축제와 문화·먹을 곳·공식 안내). 값은 공식 페이지에서 확인한 것만, 빈 절은 안 나옴
+J = cfg.get("jecheon", {})
+ext = lambda items: ('<div class="ext">' + "".join(
+    f'<a href="{escape(u)}" target="_blank" rel="noopener"><span><b>{escape(n)}</b><span>{escape(d)}</span></span><small>{escape(re.sub(r"^https?://(www\.)?", "", u).split("/")[0])}</small></a>'
+    for n, d, u in items) + "</div>") if items else ""
+
+
+def jsec(title, lead, body):
+    return f'<section class="jsec"><div class="wrap"><div class="head"><h2>{escape(title)}</h2>{"<p class=" + chr(34) + "lead" + chr(34) + ">" + escape(lead) + "</p>" if lead else ""}</div>{body}</div></section>' if body else ""
+
+
+ten_html = ('<ol class="ten">' + "".join(f'<li><span><b>{"<a href=" + chr(34) + escape(u) + chr(34) + " target=" + chr(34) + "_blank" + chr(34) + " rel=" + chr(34) + "noopener" + chr(34) + ">" + escape(n) + "</a>" if u else escape(n)}</b><span>{escape(d)}</span></span><em>{escape(m)}</em></li>' for n, d, m, u in J.get("ten", [])) + "</ol>"
+            + (f'<p class="jnote"><a class="link" href="{escape(J["ten_url"])}" target="_blank" rel="noopener">제천시 문화관광 누리집의 제천 10경 안내</a></p>' if J.get("ten_url") else "")) if J.get("ten") else ""
+food_html = ((f'<p class="jnote" style="margin:0 0 22px">{escape(J["food_intro"])}</p>' if J.get("food_intro") else "") + ext(J.get("food", []))) if J.get("food") else ""
+around_body = (f'<div class="page"><div class="wrap phead"><h1>청풍호 옆, 제천에서 머무는 법</h1><p class="lead">{escape(addr)}. {escape(", ".join(f"{n} {d}" for n, d in cfg["nearby"]))}. 차로 10분 안에 출렁다리와 문화유산단지, 정방사가 있고, 단양까지 30분 안팎입니다.</p>'
                f'<div class="maps"><a class="btn btn-fill" href="{route_url}" target="_blank" rel="noopener">카카오맵 길찾기</a><a class="btn btn-line" href="{naver_map_url}" target="_blank" rel="noopener">네이버 지도</a></div></div>'
                f'<div class="pcover">{img("lawn-lake", f"{name} 마당에서 본 청풍호", "100vw", eager=True)}</div>'
-               f'<section><div class="wrap"><div class="head"><h2>가까운 곳</h2><p class="lead">{escape(cfg["around_note"])}</p></div><div class="around">{around_html}</div></div></section></div>')
-page("around.html", f"오시는 길과 주변 | {name}", f"{name} 오시는 길. {addr}. 청풍호반 케이블카, 옥순봉 출렁다리, 청풍문화재단지, 정방사가 차로 10분 안팎.",
-     around_body, [{"@context": "https://schema.org", "@type": "WebPage", "name": f"{name} 오시는 길", "url": f"{base}/around.html", "description": f"{addr}, 주변 관광지 안내"}, crumbs("around.html", "오시는 길")], current="around.html")
+               f'<section class="jsec" style="border-top:0"><div class="wrap"><div class="head"><h2>집에서 차로 10분 안팎</h2><p class="lead">{escape(cfg["around_note"])}</p></div><div class="around">{around_html}</div></div></section>'
+               + jsec("제천 10경", J.get("ten_lead", ""), ten_html)
+               + jsec("축제와 문화", J.get("culture_lead", ""), ext(J.get("culture", [])))
+               + jsec("먹을 곳", J.get("food_lead", ""), food_html)
+               + jsec("공식 안내", J.get("links_lead", ""), ext(J.get("links", [])))
+               + "</div>")
+around_ld = {"@context": "https://schema.org", "@type": "WebPage", "name": f"{name} 오시는 길과 제천 안내", "url": f"{base}/around.html",
+             "description": f"{addr}. 제천 10경, 축제와 문화, 먹을 곳, 공식 안내 링크"}
+if J.get("ten"):
+    around_ld["mainEntity"] = {"@type": "ItemList", "name": "제천 10경", "itemListElement": [
+        {"@type": "ListItem", "position": i, "name": n, "description": d} for i, (n, d, _, _u) in enumerate(J["ten"], 1)]}
+page("around.html", f"오시는 길과 제천 안내 | {name}", f"{name} 오시는 길. {addr}. 차로 10분 안의 케이블카와 출렁다리, 제천 10경, 음악영화제와 문화재단지, 약채락 먹을 곳, 제천시 공식 안내.",
+     around_body, [around_ld, crumbs("around.html", "오시는 길")], current="around.html")
 
 # ── 블로그: posts.json → blog.html, posts/N.html (글해줌이 가장 큰 번호 글을 견본으로 복제) ──
 for x in posts:

@@ -203,6 +203,24 @@ td.ask{font-family:var(--sans);font-size:15px;color:var(--mute)}
 .around span{color:var(--ink2);font-size:14px}
 .around em{font-family:var(--serif);font-style:normal;font-size:20px;white-space:nowrap}
 
+/* 제천에서 머무는 법: 번호 목록·바깥 링크 */
+.jsec{padding:clamp(56px,7vw,96px) 0;border-top:1px solid var(--line)}
+.jsec .head{margin-bottom:clamp(24px,3vw,40px)}
+.ten{counter-reset:t;display:grid;grid-template-columns:1fr 1fr;gap:0 clamp(20px,3vw,40px);list-style:none;padding:0;margin:0}
+.ten li{counter-increment:t;display:grid;grid-template-columns:38px 1fr auto;gap:12px;align-items:baseline;border-top:1px solid var(--line);padding:14px 0}
+.ten li::before{content:counter(t,decimal-leading-zero);font-family:var(--serif);font-size:18px;color:var(--brick)}
+.ten b{display:block;font-weight:600;font-size:15.5px}
+.ten span{color:var(--ink2);font-size:14px}
+.ten em{font-family:var(--serif);font-style:normal;font-size:18px;white-space:nowrap}
+.ext{display:grid;grid-template-columns:1fr 1fr;gap:0 clamp(20px,3vw,40px)}
+.ext a{display:grid;grid-template-columns:1fr auto;gap:14px;align-items:baseline;border-top:1px solid var(--line);padding:14px 0;transition:color .2s}
+.ext a:hover{color:var(--brick)}
+.ext b{display:block;font-weight:600;font-size:15.5px}
+.ext span{color:var(--ink2);font-size:14px}
+.ext small{font-size:12px;color:var(--mute);letter-spacing:.04em;white-space:nowrap}
+.jnote{max-width:40em;color:var(--ink2);margin-top:18px;font-size:15px}
+@media (max-width:719px){.ten,.ext{grid-template-columns:1fr}}
+
 /* 글 */
 .posts{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3vw,40px)}
 .post{border-top:1px solid var(--ink);padding-top:18px}

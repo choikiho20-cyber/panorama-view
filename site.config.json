@@ -307,7 +307,7 @@
     ],
     [
       "주변에 갈 곳이 있나요?",
-      "청풍호반 케이블카, 옥순봉 출렁다리, 청풍문화재단지, 정방사, 얼음골이 차로 10분 안에 있습니다."
+      "옥순봉 출렁다리, 청풍문화유산단지, 정방사, 얼음골이 차로 10분 안팎이고 청풍호반 케이블카가 14분입니다. 집 뒤가 제천 10경의 금수산입니다."
     ],
     [
       "예약은 어떻게 하나요?",
@@ -338,19 +338,14 @@
   ],
   "around": [
     [
-      "청풍호반 케이블카",
-      "비봉산 정상까지 10분, 청풍호 전체가 내려다보입니다",
-      "14분"
-    ],
-    [
       "옥순봉 출렁다리",
-      "호수 위를 걷는 222m 다리",
+      "호수 위 222m 다리와 408m 데크길. 일반 3,000원, 월요일 휴무",
       "10분"
     ],
     [
-      "청풍문화재단지",
-      "수몰 마을의 옛집과 성곽을 옮겨 놓은 곳",
-      "12분"
+      "청풍문화유산단지",
+      "수몰 마을의 옛집과 성곽을 옮겨 놓은 호숫가 민속촌. 성인 3,000원",
+      "10분"
     ],
     [
       "정방사",
@@ -363,24 +358,25 @@
       "10분"
     ],
     [
+      "청풍호반 케이블카",
+      "물태리역에서 비봉산 정상까지 2.3km, 약 9분. 왕복 성인 18,000원",
+      "14분"
+    ],
+    [
       "단양 도담삼봉",
       "남한강의 세 봉우리",
       "26분"
     ]
   ],
-  "around_note": "집에서 차로 가는 대략의 시간입니다.",
+  "around_note": "집에서 차로 가는 대략의 시간입니다. 요금과 휴무는 공식 안내에서 확인해 주세요.",
   "nearby": [
     [
-      "수산면 소재지 마트와 식당",
-      "차로 5분"
+      "청풍호반 케이블카",
+      "차로 14분"
     ],
     [
-      "제천 시내",
-      "차로 35분"
-    ],
-    [
-      "청풍호 유람선 선착장",
-      "차로 12분"
+      "단양 도담삼봉",
+      "차로 26분"
     ]
   ],
   "channels": [
@@ -406,5 +402,181 @@
   "quote": [
     "호텔에 뒤지지 않을 안락함과 편안함에 집중했습니다. 절대 후회 없는 선택이 될 거라 자부합니다.",
     "청풍파노라마뷰 주인장, 숙소 소개글에서"
-  ]
+  ],
+  "jecheon": {
+    "ten_lead": "제천시가 정한 열 곳. 집 뒤가 5경 금수산이고, 8경 옥순봉이 차로 10분입니다.",
+    "ten_url": "https://tour.jecheon.go.kr/tour/base/contents/view?contentsNo=6&menuLevel=2&menuNo=251",
+    "ten": [
+      [
+        "의림지",
+        "삼한시대에 쌓은 저수지, 입장료 없음",
+        "",
+        "https://tour.jecheon.go.kr/tour/base/tour/contents/view?clturCntntsNo=1117&menuLevel=3&menuNo=67"
+      ],
+      [
+        "박달재",
+        "제천과 충주 사이의 고개",
+        "",
+        "https://tour.jecheon.go.kr/tour/base/tour/contents/view?clturCntntsNo=8&menuLevel=3&menuNo=67"
+      ],
+      [
+        "월악산",
+        "국립공원",
+        "",
+        "https://tour.jecheon.go.kr/tour/base/tour/contents/view?clturCntntsNo=9&menuLevel=3&menuNo=67"
+      ],
+      [
+        "청풍문화유산단지",
+        "호수 위의 작은 민속촌",
+        "10분",
+        "https://tour.jecheon.go.kr/tour/base/tour/contents/view?clturCntntsNo=10&menuLevel=3&menuNo=67"
+      ],
+      [
+        "금수산",
+        "집 바로 뒤의 산, 정방사",
+        "집 뒤",
+        "https://tour.jecheon.go.kr/tour/base/tour/contents/view?clturCntntsNo=11&menuLevel=3&menuNo=67"
+      ],
+      [
+        "용하구곡",
+        "월악산 자락의 계곡",
+        "",
+        "https://tour.jecheon.go.kr/tour/base/tour/contents/view?clturCntntsNo=12&menuLevel=3&menuNo=67"
+      ],
+      [
+        "송계계곡",
+        "월악산 자락의 계곡",
+        "",
+        "https://tour.jecheon.go.kr/tour/base/tour/contents/view?clturCntntsNo=13&menuLevel=3&menuNo=67"
+      ],
+      [
+        "옥순봉",
+        "청풍호의 봉우리, 출렁다리",
+        "10분",
+        "https://tour.jecheon.go.kr/tour/base/tour/contents/view?clturCntntsNo=14&menuLevel=3&menuNo=67"
+      ],
+      [
+        "탁사정",
+        "제천천 가의 정자",
+        "",
+        "https://tour.jecheon.go.kr/tour/base/tour/contents/view?clturCntntsNo=15&menuLevel=3&menuNo=67"
+      ],
+      [
+        "배론성지",
+        "천주교 성지",
+        "",
+        "https://tour.jecheon.go.kr/tour/base/tour/contents/view?clturCntntsNo=16&menuLevel=3&menuNo=67"
+      ]
+    ],
+    "culture_lead": "머무는 동안 날짜가 맞으면 들러 볼 곳입니다.",
+    "culture": [
+      [
+        "제천국제음악영화제",
+        "매년 9월 초, 제천 시내 일원. 2026년 22회는 9월 3일부터 8일까지였습니다",
+        "https://www.jimff.org/kor/"
+      ],
+      [
+        "청풍문화유산단지",
+        "3~10월 9시부터 18시, 11~2월 17시까지, 연중무휴. 성인 3,000원",
+        "https://tour.jecheon.go.kr/tour/base/tour/contents/view?clturCntntsNo=10&menuLevel=3&menuNo=67"
+      ],
+      [
+        "청풍호 유람선",
+        "청풍랜드 선착장에서 옥순봉·구담봉까지 왕복 1시간 20분, 성인 19,000원",
+        "https://tour.jecheon.go.kr/tour/base/tour/contents/view?clturCntntsNo=3780&menuLevel=3&menuNo=95"
+      ],
+      [
+        "제천문화관광재단",
+        "공연과 전시, 축제 일정이 올라오는 곳",
+        "https://www.jccf.or.kr/"
+      ]
+    ],
+    "food_lead": "제천시 음식 브랜드 '약채락'은 약초와 채소로 차린 밥상입니다. 청풍호 쪽에서 가까운 집들입니다.",
+    "food_intro": "",
+    "food": [
+      [
+        "밥상위의 보약한첩",
+        "청풍면, 농촌진흥청 인증 농가맛집. 약고추장 더덕구이",
+        "https://tour.jecheon.go.kr/tour/base/tour/contents/view?clturCntntsNo=3740&menuLevel=3&menuNo=13"
+      ],
+      [
+        "예촌",
+        "청풍면, 직접 담근 장으로 차린 더덕구이와 곤드레밥 한정식",
+        "https://tour.jecheon.go.kr/tour/base/tour/contents/view?clturCntntsNo=3745&menuLevel=3&menuNo=13"
+      ],
+      [
+        "약채락 성현",
+        "청풍면, 20년 넘은 한정식집. 약선 갈비정식",
+        "https://tour.jecheon.go.kr/tour/base/tour/contents/view?clturCntntsNo=94237&menuLevel=3&menuNo=13"
+      ],
+      [
+        "느티나무횟집",
+        "청풍면, 40년 쏘가리매운탕과 비빔회",
+        "https://tour.jecheon.go.kr/tour/base/tour/contents/view?clturCntntsNo=3737&menuLevel=3&menuNo=13"
+      ],
+      [
+        "산마루",
+        "금성면, 곤드레돌솥밥과 한방떡갈비 한정식",
+        "https://tour.jecheon.go.kr/tour/base/tour/contents/view?clturCntntsNo=3738&menuLevel=3&menuNo=13"
+      ],
+      [
+        "청풍떡갈비",
+        "금성면, 3대째 한우 통마늘 떡갈비",
+        "https://tour.jecheon.go.kr/tour/base/tour/contents/view?clturCntntsNo=3751&menuLevel=3&menuNo=13"
+      ],
+      [
+        "카우보이그릴",
+        "청풍면, 차로 11분. 12시간 훈연한 텍사스식 바비큐",
+        "https://tour.jecheon.go.kr/tour/base/tour/contents/view?clturCntntsNo=94249&menuLevel=3&menuNo=13"
+      ],
+      [
+        "콘크리트월",
+        "금성면, 차로 17분. 2023 한국건축가협회상을 받은 청풍호 전망 카페",
+        "https://polle.com/place/1qh84a/%EC%BD%98%ED%81%AC%EB%A6%AC%ED%8A%B8%EC%9B%94"
+      ],
+      [
+        "카페너른",
+        "청풍면, 차로 16분. 온실 식물원과 정원이 있는 호수 카페",
+        "https://polle.com/place/46Iq0z/%EC%B9%B4%ED%8E%98%EB%84%88%EB%A5%B8"
+      ],
+      [
+        "하너물카페",
+        "수산면, 차로 16분. 놀이방이 있는 화덕피자 카페",
+        "https://mom-mom.net/travel/places/66f0d89d5d76893811f40ffa"
+      ]
+    ],
+    "links_lead": "요금과 운영 시간은 바뀌니 공식 안내를 함께 보세요.",
+    "links": [
+      [
+        "제천시 문화관광",
+        "관광지, 맛집, 축제 공식 안내",
+        "https://tour.jecheon.go.kr/tour/base/main/view"
+      ],
+      [
+        "제천시관광협의회",
+        "시티투어 버스, 관광택시, 회원사 안내",
+        "https://jecheontour.com/"
+      ],
+      [
+        "제천시청",
+        "제천시 공식 누리집",
+        "https://www.jecheon.go.kr/"
+      ],
+      [
+        "청풍호반 케이블카",
+        "운행 구간과 요금, 강풍 시 운행 중단 안내",
+        "https://tour.jecheon.go.kr/tour/base/tour/contents/view?clturCntntsNo=3727&menuLevel=3&menuNo=16"
+      ],
+      [
+        "옥순봉 출렁다리",
+        "입장료와 운영 시간, 휴무일",
+        "https://tour.jecheon.go.kr/tour/base/tour/contents/view?clturCntntsNo=94203&menuLevel=3&menuNo=852"
+      ],
+      [
+        "약채락 식당 목록",
+        "제천시가 정한 약선 밥상 20곳",
+        "https://tour.jecheon.go.kr/tour/base/tour/contents/list?sc1=B010200&menuLevel=3&menuNo=14"
+      ]
+    ]
+  }
 }
