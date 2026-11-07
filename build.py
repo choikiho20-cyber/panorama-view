@@ -99,6 +99,7 @@ ico_menu = ICON.format('<path d="M3 7h18M3 12h18M3 17h18"/>')
 ico_x = ICON.format('<path d="M6 6l12 12M18 6L6 18"/>')
 mark = (ROOT / "static" / "favicon.svg").read_text(encoding="utf-8").strip().replace("<svg ", '<svg aria-hidden="true" ', 1)
 
+ADMIN_KEY = "pano_gh_token"  # 관리 화면 열쇠 저장 이름(기기별 localStorage) — 사이트마다 다르게
 MENU = [("house.html", "공간"), ("gathering.html", "모임"), ("pet.html", "반려견"), ("guide.html", "이용 안내"), ("around.html", "오시는 길"), ("blog.html", "소식")]
 sms_href = f"sms:{sms_tel}?&body={quote(cfg['sms_body'])}"
 if g["lat"]:
@@ -225,7 +226,9 @@ posts_section = (f'<section><div class="wrap"><div class="head rv"><h2>소식</h
 
 index_body = fill((T / "index.html").read_text(encoding="utf-8"), dict(
     hero_pic=hero_pic, tagline="".join(f"<span><i>{escape(l.strip())}</i></span>" for l in cfg["tagline"].split("|")),
-    hero_sub=escape(f"대지 {cfg['site_area']}에 {cfg['house_area']} 집 한 채. 기준 {cap['base']}명, 최대 {cap['max']}명이 호수를 보며 묵습니다."),
+    hero_sub=escape(cfg.get("hero_sub") or f"대지 {cfg['site_area']}에 {cfg['house_area']} 집 한 채. 기준 {cap['base']}명, 최대 {cap['max']}명이 호수를 보며 묵습니다."),
+    # 공지 한 줄 — 사장님이 관리 화면에서 켜고 끈다
+    notice_html=(f'<p class="notice"><span>공지</span>{escape(cfg["notice"])}</p>' if cfg.get("notice_on") and cfg.get("notice") else ""),
     hero_cap=f'<p class="cap">촬영 예정 자리, AI 시안</p>' if hero in AI and cfg["photos_temporary"] else "",
     tel=tel, phone=phone, ico_call=ico_call, ico_sms=ico_sms, name=escape(name), sms_tel=sms_tel, today=today.isoformat(),
     people_opts="".join(f'<option{" selected" if n == cap["base"] else ""}>{n}</option>' for n in range(2, cap["max"] + 1)),
@@ -350,6 +353,9 @@ for x in posts:
     body = (f'<div class="page"><article class="wrap" style="max-width:820px"><header class="phead"><p class="blog-post-meta small"><time datetime="{date}">{date}</time></p>'
             f'<h1>{escape(title)}</h1><p class="blog-card-tags small">{tags}</p></header>'
             f'<div class="blog-post-content" style="padding-bottom:clamp(80px,10vw,140px)">{content}</div>'
+            # 「이 글 수정」 — 관리 화면에 들어와 있는 기기(열쇠가 저장된 기기)에서만 보인다
+            f'<a class="edit-link" id="editLink" href="{base}/admin.html#{x["id"]}" hidden>이 글 수정</a>'
+            f'<script>try{{if(localStorage.getItem("{ADMIN_KEY}"))document.getElementById("editLink").hidden=false}}catch(e){{}}</script>'
             f'<p style="padding-bottom:80px"><a class="link" href="{base}/blog.html">소식 목록으로</a></p></article></div>')
     lds = [{"@context": "https://schema.org", "@type": "Article", "headline": title, "description": desc, "image": image, "datePublished": date, "dateModified": date,
             "author": {"@type": "Organization", "name": name}, "publisher": {"@type": "Organization", "name": name, "logo": {"@type": "ImageObject", "url": f"{base}/favicon.svg"}},
@@ -418,7 +424,12 @@ nl = "\n"
 ## 글 목록
 {nl.join(f"- [{plain(x['title'], 120)}]({base}/posts/{x['id']}.html): {plain(x.get('summary') or x.get('content'), 140)}" for x in posts[:100])}
 """, encoding="utf-8")
-(DIST / "robots.txt").write_text("User-agent: *\nAllow: /\n" + (f"Sitemap: {domain}/sitemap.xml\n" if domain and not noindex else ""), encoding="utf-8")
+(DIST / "robots.txt").write_text("User-agent: *\nAllow: /\nDisallow: /admin.html\n" + (f"Sitemap: {domain}/sitemap.xml\n" if domain and not noindex else ""), encoding="utf-8")
+# 사장님 관리 화면 — 비밀번호 하나로 config·posts.json을 고치면 Actions가 다시 빌드한다 (공통 지시서 11/8)
+(DIST / "admin.html").write_text(fill((T / "admin.html").read_text(encoding="utf-8"), dict(
+    name=escape(name), repo=cfg["repo"], branch=cfg["branch"], key=ADMIN_KEY, site=base, maker_phone="010-2468-5662")), encoding="utf-8")
+if (ROOT / "admin-key.json").exists():  # 토큰을 비밀번호로 잠근 파일 — 관리 화면이 admin-key.json 으로 읽는다
+    shutil.copy(ROOT / "admin-key.json", DIST / "admin-key.json")
 if domain and not noindex:
     urls = [(f"{domain}/", today)] + [(f"{domain}/{p}", today) for p, _ in MENU] + [(f"{domain}/posts/{x['id']}.html", str(x['date'])[:10]) for x in posts]
     (DIST / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'

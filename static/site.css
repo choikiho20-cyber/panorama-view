@@ -81,6 +81,12 @@ section+section{border-top:1px solid var(--line)}
 .hero .cta{display:flex;gap:12px;flex-wrap:wrap}
 .hero .cap{position:absolute;right:var(--pad);bottom:16px;font-size:12px;color:rgba(255,255,255,.7);z-index:1}
 
+/* 공지 한 줄 (사장님이 관리 화면에서 켬) */
+.notice{display:flex;gap:14px;align-items:baseline;max-width:var(--w);margin:0 auto;padding:16px var(--pad);border-bottom:1px solid var(--line);font-size:15.5px;color:var(--ink2)}
+.notice span{flex:none;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--brick);font-weight:500}
+.edit-link{position:fixed;right:16px;bottom:calc(76px + env(safe-area-inset-bottom));z-index:40;background:var(--brick);color:#fff;padding:10px 16px;font-size:13px;letter-spacing:.06em}
+@media (min-width:720px){.edit-link{bottom:24px}}
+
 /* 예약 띠 */
 .book{background:var(--bg2);margin-top:clamp(36px,5vw,64px)}
 .book form{display:grid;grid-template-columns:1.2fr .8fr .8fr auto;gap:0;align-items:end}
