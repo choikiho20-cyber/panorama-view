@@ -426,10 +426,12 @@ nl = "\n"
 """, encoding="utf-8")
 (DIST / "robots.txt").write_text("User-agent: *\nAllow: /\nDisallow: /admin.html\n" + (f"Sitemap: {domain}/sitemap.xml\n" if domain and not noindex else ""), encoding="utf-8")
 # 사장님 관리 화면 — 비밀번호 하나로 config·posts.json을 고치면 Actions가 다시 빌드한다 (공통 지시서 11/8)
-(DIST / "admin.html").write_text(fill((T / "admin.html").read_text(encoding="utf-8"), dict(
-    name=escape(name), repo=cfg["repo"], branch=cfg["branch"], key=ADMIN_KEY, site=base, maker_phone="010-2468-5662")), encoding="utf-8")
-if (ROOT / "admin-key.json").exists():  # 토큰을 비밀번호로 잠근 파일 — 관리 화면이 admin-key.json 으로 읽는다
-    shutil.copy(ROOT / "admin-key.json", DIST / "admin-key.json")
+# 판매 전 견본에서는 admin_on=false 로 꺼 둔다(지시서 7절). 계약 뒤 도메인 연결 때 true 로 켜고 토큰 → [비밀번호 정하기]
+if cfg.get("admin_on"):
+    (DIST / "admin.html").write_text(fill((T / "admin.html").read_text(encoding="utf-8"), dict(
+        name=escape(name), repo=cfg["repo"], branch=cfg["branch"], key=ADMIN_KEY, site=base, maker_phone="010-2468-5662")), encoding="utf-8")
+    if (ROOT / "admin-key.json").exists():  # 토큰을 비밀번호로 잠근 파일 — 관리 화면이 admin-key.json 으로 읽는다
+        shutil.copy(ROOT / "admin-key.json", DIST / "admin-key.json")
 if domain and not noindex:
     urls = [(f"{domain}/", today)] + [(f"{domain}/{p}", today) for p, _ in MENU] + [(f"{domain}/posts/{x['id']}.html", str(x['date'])[:10]) for x in posts]
     (DIST / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
